@@ -34,6 +34,10 @@ namespace DeepSpace
 		{
 			Cola<ArbolGeneral<Planeta>> c = new Cola<ArbolGeneral<Planeta>>();
 			int Conta = 0;
+			int nivel1 = 0;
+			int nivel2 = 0;
+			int nivel3 = 0;
+			int nivel4 = 0;
 
 			c.encolar(arbol);
 
@@ -41,9 +45,20 @@ namespace DeepSpace
 			{
 				arbol = c.desencolar();
 
+
+				Console.WriteLine(arbol.getDatoRaiz().population);
 				if (arbol.getDatoRaiz().population > 10)
 				{
 					Conta++;
+					if (Conta == 1)
+					{ nivel1++; }
+
+					else if (Conta < 6)
+					{ nivel2++; }
+					else if (Conta < 24)
+					{ nivel3++; }
+					else
+					{ nivel4++; }
 				}
 
 				Console.Write(arbol.getDatoRaiz() + "  ");
@@ -61,17 +76,24 @@ namespace DeepSpace
 
 			//calcular cantidad de planetas con población > 10 en cada nivel del arbol (recorrido por niveles,con limitante de población)
 
-			return "La cantidad de planetas con población mayor a 10 son : " + Conta + "  ";
+			return $"\r\nCantidad de planetas con poblacion mayor a 10 segun nivel:\r\n" +
+				$"nivel 1: {nivel1}\r\n" +
+				$"nivel 2: {nivel2}\r\n" +
+				$"nivel 3: {nivel3}\r\n" +
+				$"nivel 4: {nivel4}\r\n";
 		}
 
 
 		public String Consulta3(ArbolGeneral<Planeta> arbol)
 		{
 			// calcular  promedio poblacion por nivel de arbol (recorrido por niveles, sumar en total y cantidad y dividir por cantidad para sacar promedio)
-
 			Cola<ArbolGeneral<Planeta>> c = new Cola<ArbolGeneral<Planeta>>();
-			long Conta = 0;
-			long canti = 0;
+			int Conta = 0;
+			uint nivel1 = 0;
+			uint nivel2 = 0;
+			uint nivel3 = 0;
+			uint nivel4 = 0;
+			
 
 			c.encolar(arbol);
 
@@ -79,22 +101,34 @@ namespace DeepSpace
 			{
 				arbol = c.desencolar();
 
+				Conta++;
+				if (Conta == 1)
+				{ nivel1 += arbol.getDatoRaiz().population; }
+				else if (Conta < 6)
+				{ nivel2 += arbol.getDatoRaiz().population; }
+				else if (Conta < 24)
+				{ nivel3 += arbol.getDatoRaiz().population; }
+				else
+				{ nivel4 += arbol.getDatoRaiz().population; }
 
+
+				Console.Write(arbol.getDatoRaiz() + "  ");
 
 
 				foreach (var hijo in arbol.getHijos())
 					c.encolar(hijo);
-				Conta += arbol.getDatoRaiz().population;
-				canti++;
 
-
-
-
+				
 			}
-			Double Promedio = Conta / canti;
-			return "el promedio de poblacion por nivel del arbol es de : " + Promedio;
+			nivel2 = nivel2 / 5;
+			nivel3 = nivel3 / 15;
+			nivel4 = nivel4 / 15;
+			return $"\r\n\r\n\r\n\r\n\r\n\r\nPromedio de poblacion segun nivel:\r\n" +
+				$"nivel 1: {nivel1}\r\n" +
+				$"nivel 2: {nivel2}\r\n" +
+				$"nivel 3: {nivel3}\r\n" +
+				$"nivel 4: {nivel4}\r\n";
 		}
-
 		public Movimiento CalcularMovimiento(ArbolGeneral<Planeta> arbol)
 		{
 			List<Planeta> cami = new List<Planeta>();
