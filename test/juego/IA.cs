@@ -14,13 +14,13 @@ namespace DeepSpace
         public override void Update(float delta)
         {
             acc += delta;
-            if (acc > 5)
+            if (acc > 2)
             {
                 GameScene gamescene = (GameScene)game.scene;
                 Movimiento ataque = this.est.CalcularMovimiento(game.scene.arbolDePlanetas);
                 if(ataque!=null)
                     gamescene.SendFleet(ataque.origen, ataque.destino);
-                acc -= 5;
+                acc -= 2;
             }
         }
 

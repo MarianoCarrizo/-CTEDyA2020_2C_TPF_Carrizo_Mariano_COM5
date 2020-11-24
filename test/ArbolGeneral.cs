@@ -5,34 +5,34 @@ namespace DeepSpace
 {
 	public class ArbolGeneral<T>
 	{
-		
+
 		private T dato;
 		private List<ArbolGeneral<T>> hijos = new List<ArbolGeneral<T>>();
 
 		public ArbolGeneral(T dato) {
 			this.dato = dato;
 		}
-	
+
 		public T getDatoRaiz() {
 			return this.dato;
 		}
-	
+
 		public List<ArbolGeneral<T>> getHijos() {
 			return hijos;
 		}
-	
+
 		public void agregarHijo(ArbolGeneral<T> hijo) {
 			this.getHijos().Add(hijo);
 		}
-	
+
 		public void eliminarHijo(ArbolGeneral<T> hijo) {
 			this.getHijos().Remove(hijo);
 		}
-	
+
 		public bool esHoja() {
 			return this.getHijos().Count == 0;
 		}
-	
+
 		public int altura() {
 			int height = 0;
 			if (this.esHoja())
@@ -58,7 +58,7 @@ namespace DeepSpace
 			while (!C.esVacia())
 			{
 				auxi = C.desencolar();
-				
+
 				if (dato.Equals(auxi) == true)
 				{
 					return nivel;
@@ -93,24 +93,24 @@ namespace DeepSpace
 
 			c.encolar(this);
 
-            while (!c.esVacia())
+			while (!c.esVacia())
 			{
 				arbolaux = c.desencolar();
 
 				Console.Write(arbolaux.getDatoRaiz() + "  ");
 
 
-				foreach (var hijo in arbolaux.getHijos()) 
+				foreach (var hijo in arbolaux.getHijos())
 					c.encolar(hijo);
 
-				
-			
-			
+
+
+
 			}
 
-		
-		
-		
+
+
+
 		}
 		public void PostOrden()
 		{
@@ -122,7 +122,9 @@ namespace DeepSpace
 
 
 		}
-		
+
+
+	
 
 		
 

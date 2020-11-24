@@ -45,7 +45,7 @@ namespace DeepSpace
             {
                 if (team != 0)
                 {
-                    population += 1;
+                    population += 5;
                 }
                 acc = acc - 1 + size/100.0f;
             }
