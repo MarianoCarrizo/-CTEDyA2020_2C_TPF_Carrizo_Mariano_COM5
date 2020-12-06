@@ -85,44 +85,7 @@ namespace DeepSpace
 
 		}
 
-		public void Porniveles()
-		{
-
-			Cola<ArbolGeneral<T>> c = new Cola<ArbolGeneral<T>>();
-			ArbolGeneral<T> arbolaux;
-
-			c.encolar(this);
-
-			while (!c.esVacia())
-			{
-				arbolaux = c.desencolar();
-
-				Console.Write(arbolaux.getDatoRaiz() + "  ");
-
-
-				foreach (var hijo in arbolaux.getHijos())
-					c.encolar(hijo);
-
-
-
-
-			}
-
-
-
-
-		}
-		public void PostOrden()
-		{
-			foreach (var hijo in this.getHijos())
-				hijo.PostOrden();
-
-			Console.WriteLine(this.getDatoRaiz() + "  ");
-
-
-
-		}
-
+		
 
 	
 
